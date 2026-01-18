@@ -1,9 +1,11 @@
 package com.journal.journalws.dto.entry;
 
 import com.journal.journalws.annotation.entry.PrivacyCheck;
+import com.journal.journalws.enums.entry.Privacy;
 import jakarta.validation.constraints.NotNull;
 
 import java.util.List;
+import java.util.UUID;
 
 public class EntrySaveRequest {
 
@@ -16,9 +18,9 @@ public class EntrySaveRequest {
     @PrivacyCheck
     private final String privacy;
 
-    private final List<String> allowedUsers;
+    private final List<UUID> allowedUsers;
 
-    public EntrySaveRequest(String content, List<String> tags, String privacy, List<String> allowedUsers) {
+    public EntrySaveRequest(String content, List<String> tags, String privacy, List<UUID> allowedUsers) {
         this.content = content;
         this.tags = tags;
         this.privacy = privacy;
@@ -33,11 +35,11 @@ public class EntrySaveRequest {
         return tags;
     }
 
-    public String getPrivacy() {
-        return privacy;
+    public Privacy getPrivacy() {
+        return Privacy.valueOf(privacy);
     }
 
-    public List<String> getAllowedUsers() {
+    public List<UUID> getAllowedUsers() {
         return allowedUsers;
     }
 

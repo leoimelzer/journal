@@ -12,9 +12,10 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
 import java.util.List;
+import java.util.UUID;
 
 @RestController
-@RequestMapping("/entry")
+@RequestMapping("/v1/entry")
 public class EntryController {
 
     private final EntryService entryService;
@@ -37,7 +38,7 @@ public class EntryController {
 
     @PostMapping
     public ResponseEntity<Void> create(@Valid @RequestBody EntrySaveRequest request) {
-        Long id = entryService.create(request);
+        UUID id = entryService.create(request);
         URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(id).toUri();
         return ResponseEntity.created(location).build();
     }

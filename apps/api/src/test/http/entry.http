@@ -27,7 +27,7 @@ Accept: application/json
   "content": "{{entry.update.content}}",
   "tags": null,
   "privacy": "{{entry.update.privacy}}",
-  "allowed_sers": null
+  "allowed_users": null
 }
 
 ### Delete entry

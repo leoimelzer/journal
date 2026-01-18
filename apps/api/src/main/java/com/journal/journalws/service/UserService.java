@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Set;
+import java.util.UUID;
 
 @Service
 public class UserService {
@@ -24,7 +25,7 @@ public class UserService {
         return userRepository.findById(id).orElse(null);
     }
 
-    public Long create(UserSaveRequest request) {
+    public UUID create(UserSaveRequest request) {
         User user = new User();
 
         user.setName(request.getName());

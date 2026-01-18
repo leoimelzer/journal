@@ -2,28 +2,39 @@ package com.journal.journalws.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.*;
 
+import java.time.LocalDateTime;
 import java.util.Objects;
+import java.util.UUID;
 
 @Entity
 @Table(name = "users")
 public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @GeneratedValue
+    @Column(columnDefinition = "uuid")
+    private UUID id;
 
-    @Column(name = "name", nullable = false)
+    @Column(name = "name", nullable = false, length = 50)
+    @Size(max = 50)
     private String name;
 
     @Column(name = "email", nullable = false, unique = true)
+    @Email(message = "Invalid email")
     private String email;
 
-    @Column(name = "password")
+    @Column(name = "password", nullable = false)
     @JsonIgnore
     private String password;
 
-    public Long getId() {
+    @PrePersist
+    protected void onCreate() {
+        this.id = UUID.randomUUID();
+    }
+
+    public UUID getId() {
         return id;
     }
 

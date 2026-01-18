@@ -2,10 +2,10 @@ package com.journal.journalws.service;
 
 import com.journal.journalws.dto.entry.EntryListRequest;
 import com.journal.journalws.dto.entry.EntrySaveRequest;
+import com.journal.journalws.enums.entry.Privacy;
 import com.journal.journalws.model.Entry;
 import com.journal.journalws.repository.EntryRepository;
 import com.journal.journalws.repository.UserRepository;
-import com.journal.journalws.util.common.RequestUtils;
 import jakarta.validation.ConstraintViolation;
 import jakarta.validation.ConstraintViolationException;
 import jakarta.validation.Validator;
@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Set;
+import java.util.UUID;
 
 @Service
 public class EntryService {
@@ -51,24 +52,23 @@ public class EntryService {
                 .toList();
     }
 
-    public Long create(EntrySaveRequest request) {
+    public UUID create(EntrySaveRequest request) {
         Entry entry = new Entry();
-        String privacy = request.getPrivacy();
 
-        entry.setCreatedAt(LocalDateTime.now());
         entry.setContent(request.getContent());
         entry.setTags(request.getTags());
-        entry.setPrivacy(privacy);
+        entry.setPrivacy(request.getPrivacy());
         entry.setAllowedUsers(request.getAllowedUsers());
 
-        Long userId = 1L; // TODO: Aqui tem que pegar do usuário dono do token da requisição
+        // TODO: Aqui tem que pegar do usuário dono do token da requisição
+        UUID userId = UUID.randomUUID();
         entry.setUserId(userId);
 
-        // TODO: Rever a lógica
 //        entryRepository.findByUserId(userId).ifPresent(e -> {
 //            System.out.println(e.getUserId());
 //            e.setUserId(e.getUserId());
 //        });
+        // TODO: END
 
         Set<ConstraintViolation<Entry>> violations = validator.validate(entry);
 
@@ -83,15 +83,12 @@ public class EntryService {
     public void update(Long id, EntrySaveRequest request) {
         Entry entry = get(id);
 
-        String privacy = request.getPrivacy();
         entry.setContent(request.getContent());
         entry.setTags(request.getTags());
-        entry.setPrivacy(privacy);
+        entry.setPrivacy(request.getPrivacy());
 
-        List<String> allowedUsers = request.getAllowedUsers();
+        List<UUID> allowedUsers = request.getAllowedUsers();
         entry.setAllowedUsers(allowedUsers);
-
-        entry.setUpdatedAt(LocalDateTime.now());
 
         Set<ConstraintViolation<Entry>> violations = validator.validate(entry);
 

@@ -1,50 +1,74 @@
 package com.journal.journalws.model;
 
+import com.journal.journalws.enums.entry.Privacy;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.UUID;
 
 @Entity
 @Table(name = "entries")
 public class Entry {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @GeneratedValue
+    @Column(columnDefinition = "uuid")
+    private UUID id;
 
     @Column(name = "user_id", nullable = false)
-    private Long userId;
+    private UUID userId;
 
     @Column(name = "content", nullable = false)
+    @Lob
     private String content;
 
     @ElementCollection
+    @CollectionTable(name = "entry_tags", joinColumns = @JoinColumn(name = "entry_id"))
     @Column(name = "tag")
     private List<String> tags;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "privacy", nullable = false)
-    private String privacy;
+    private Privacy privacy;
 
     @ElementCollection
-    @Column(name = "user_id")
-    private List<String> allowedUsers;
+    @CollectionTable(name = "entry_allowed_users", joinColumns = @JoinColumn(name = "entry_id"))
+    @Column(name = "allowed_users_ids")
+    private List<UUID> allowedUsers;
 
     @Column(name = "created_at", nullable = false)
     private LocalDateTime createdAt;
 
-    @Column(name = "updated_at")
+    @Column(name = "updated_at", nullable = false)
     private LocalDateTime updatedAt;
 
-    public Long getId() {
+    public Entry() {
+        this.id = UUID.randomUUID();
+        this.createdAt = LocalDateTime.now();
+    }
+
+    @PrePersist
+    protected void onCreate() {
+        this.id = UUID.randomUUID();
+        this.createdAt = LocalDateTime.now();
+        this.updatedAt = LocalDateTime.now();
+    }
+
+    @PreUpdate
+    protected void onUpdate() {
+        this.updatedAt = LocalDateTime.now();
+    }
+
+    public UUID getId() {
         return id;
     }
 
-    public Long getUserId() {
+    public UUID getUserId() {
         return userId;
     }
 
-    public void setUserId(Long userId) {
+    public void setUserId(UUID userId) {
         this.userId = userId;
     }
 
@@ -64,19 +88,19 @@ public class Entry {
         this.tags = tags;
     }
 
-    public String getPrivacy() {
+    public Privacy getPrivacy() {
         return privacy;
     }
 
-    public void setPrivacy(String privacy) {
+    public void setPrivacy(Privacy privacy) {
         this.privacy = privacy;
     }
 
-    public List<String> getAllowedUsers() {
+    public List<UUID> getAllowedUsers() {
         return allowedUsers;
     }
 
-    public void setAllowedUsers(List<String> allowedUsers) {
+    public void setAllowedUsers(List<UUID> allowedUsers) {
         this.allowedUsers = allowedUsers;
     }
 
