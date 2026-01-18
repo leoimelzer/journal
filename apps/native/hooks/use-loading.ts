@@ -10,6 +10,15 @@ import { useFonts } from 'expo-font'
 import { useEffect, useMemo } from 'react'
 
 import { useSessionStore } from '@/stores'
+import { locale } from '@/i18n'
+
+import dayjs from 'dayjs'
+import relativeTime from 'dayjs/plugin/relativeTime'
+
+import 'dayjs/locale/pt-br'
+
+dayjs.extend(relativeTime)
+dayjs.locale(locale.languageTag)
 
 export function useLoading() {
   const initialize = useSessionStore(state => state.initialize)
