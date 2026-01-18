@@ -1,0 +1,23 @@
+{
+  "build": {
+    "development": {
+      "environment": "development",
+      "distribution": "internal",
+      "developmentClient": true,
+      "ios": {
+        "simulator": true
+      }
+    },
+    "staging": {
+      "environment": "staging",
+      "distribution": "internal",
+      "android": {
+        "buildType": "apk"
+      }
+    },
+    "production": {
+      "environment": "production",
+      "autoIncrement": true
+    }
+  }
+}
