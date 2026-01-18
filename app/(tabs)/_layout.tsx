@@ -1,4 +1,4 @@
-import FontAwesome from '@expo/vector-icons/FontAwesome';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { Tabs } from 'expo-router';
 
 export default function TabsLayout() {
@@ -14,7 +14,7 @@ export default function TabsLayout() {
           title: 'Home',
           tabBarIcon: ({ color }) => {
             return (
-              <FontAwesome
+              <MaterialCommunityIcons
                 size={28}
                 name="home"
                 color={color}
@@ -30,7 +30,7 @@ export default function TabsLayout() {
           title: 'Settings',
           tabBarIcon: ({ color }) => {
             return (
-              <FontAwesome
+              <MaterialCommunityIcons
                 size={28}
                 name="cog"
                 color={color}

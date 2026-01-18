@@ -1,12 +1,10 @@
 import { Link, useRouter } from 'expo-router';
-import { View, Text, TouchableOpacity, useColorScheme, Pressable, Button } from 'react-native';
+import { View, Text, TouchableOpacity, Pressable, Button } from 'react-native';
 
 import { styles } from './styles'
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useState } from 'react';
 
 export default function HomeScreen() {
-  const colorScheme = useColorScheme()
-
   const router = useRouter()
 
   const [count, setCount] = useState<number>(0)
@@ -19,10 +17,6 @@ export default function HomeScreen() {
     const { id } = parameters
     router.push(`/record/${id}`)
   }, [router])
-
-  useEffect(() => {
-    console.log('[HomeScreen] colorScheme', colorScheme)
-  }, [colorScheme])
 
   return (
     <View style={styles.container}>
