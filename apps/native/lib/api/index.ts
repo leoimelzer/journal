@@ -1,5 +1,6 @@
 import axios from 'axios'
 import { locale } from '@/i18n'
+import { Entry } from './entry'
 import { User } from './user'
 
 class Api {
@@ -14,8 +15,11 @@ class Api {
 
   public user: User
 
+  public entry: Entry
+
   constructor() {
     this.user = new User(this.instance)
+    this.entry = new Entry(this.instance)
   }
 }
 
