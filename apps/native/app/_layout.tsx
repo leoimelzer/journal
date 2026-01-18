@@ -1,6 +1,24 @@
-import { Stack } from 'expo-router';
+import { useLoading } from '@/hooks'
+import { Stack } from 'expo-router'
+import { useEffect } from 'react'
+import * as SplashScreen from 'expo-splash-screen'
 
 export default function RootLayout() {
+  const { loading } = useLoading()
+
+  useEffect(() => {
+    if (loading) {
+      return
+    }
+
+    SplashScreen.hideAsync()
+  }, [loading])
+
+  if (loading) {
+    console.log('[RootLayout] Loading...')
+    return null
+  }
+
   return (
     <Stack
       screenOptions={{
