@@ -1,0 +1,18 @@
+version: '3'
+
+tasks:
+  docker:run:
+    desc: Run postgres' database container
+    cmds:
+      - docker compose up -d --build
+    silent: false
+
+  docker:stop:
+    desc: Stop postgres' database container
+    cmds:
+      - docker compose down
+
+  docker:clean:
+    desc: Remove postgres' database volume
+    cmds:
+      - docker volume rm journal_postgresql_data
