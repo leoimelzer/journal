@@ -10,7 +10,7 @@ export const useSessionStore = create<SessionStore>((set, get) => ({
   initialize: async () => {
     try {
       console.log('[useSessionStore] Initializing...')
-      await new Promise(resolve => setTimeout(resolve, 5000))
+      await new Promise(resolve => setTimeout(resolve, 1000))
     } catch (error) {
       console.log(error)
     } finally {
