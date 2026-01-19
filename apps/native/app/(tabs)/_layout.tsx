@@ -12,15 +12,27 @@ export default function TabsLayout() {
         name="(home)"
         options={{
           title: 'Home',
-          tabBarIcon: ({ color }) => {
-            return (
-              <MaterialCommunityIcons
-                size={28}
-                name="home"
-                color={color}
-              />
-            )
-          },
+          tabBarIcon: ({ color }) => (
+            <MaterialCommunityIcons
+              size={28}
+              name="home"
+              color={color}
+            />
+          ),
+        }}
+      />
+
+      <Tabs.Screen
+        name="(navigation)"
+        options={{
+          title: 'Navigation',
+          tabBarIcon: ({ color }) => (
+            <MaterialCommunityIcons
+              size={28}
+              name="navigation"
+              color={color}
+            />
+          ),
         }}
       />
 
@@ -28,15 +40,13 @@ export default function TabsLayout() {
         name="(settings)"
         options={{
           title: 'Settings',
-          tabBarIcon: ({ color }) => {
-            return (
-              <MaterialCommunityIcons
-                size={28}
-                name="cog"
-                color={color}
-              />
-            )
-          },
+          tabBarIcon: ({ color }) => (
+            <MaterialCommunityIcons
+              size={28}
+              name="cog"
+              color={color}
+            />
+          ),
         }}
       />
     </Tabs>

@@ -1,6 +1,6 @@
 import { Stack } from 'expo-router';
 
-export default function HomeLayout() {
+export default function NavigationLayout() {
   return (
     <Stack
       screenOptions={{
@@ -16,8 +16,16 @@ export default function HomeLayout() {
       <Stack.Screen
         name="index"
         options={{
-          headerTitle: 'Home'
+          headerTitle: 'Navigation'
         }}
+      />
+
+      <Stack.Screen
+        name="details/index"
+      />
+
+      <Stack.Screen
+        name="record/[id]"
       />
     </Stack>
   );
