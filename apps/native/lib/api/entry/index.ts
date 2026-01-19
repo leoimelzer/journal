@@ -9,7 +9,7 @@ export class Entry {
     this.instance = instance
   }
 
-  public async list(params: { userId: UUID, privacy?: Privacy }) {
+  public async list(params?: { userId?: UUID, privacy?: Privacy }) {
     const response = await this.instance.get<any>(
       '/v1/entry',
       { params }
