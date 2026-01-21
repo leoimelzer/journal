@@ -26,6 +26,9 @@ export default function NavigationLayout() {
 
       <Stack.Screen
         name="record/[id]"
+        options={{
+          title: 'Record'
+        }}
       />
     </Stack>
   );

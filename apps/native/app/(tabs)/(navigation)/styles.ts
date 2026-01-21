@@ -6,12 +6,8 @@ export const styles = StyleSheet.create({
     marginVertical: 18,
     gap: 10
   },
-  navigation: {},
   route: {
     fontSize: 18,
     fontWeight: 'bold'
-  },
-  redirects: {
-    gap: 3
   }
 });
