@@ -21,7 +21,7 @@ dayjs.locale(locale.languageTag)
 export function useLoading() {
   const initialize = useSessionStore(state => state.initialize)
 
-  const isLoadingSession = useSessionStore(state => state.loading)
+  const sessionLoading = useSessionStore(state => state.loading)
 
   const [fonts] = useFonts({
     Inter_400Regular,
@@ -32,8 +32,8 @@ export function useLoading() {
   })
 
   const loading = useMemo(
-    () => !fonts || isLoadingSession,
-    [fonts, isLoadingSession]
+    () => !fonts || sessionLoading,
+    [fonts, sessionLoading]
   )
 
   useEffect(() => {

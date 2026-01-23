@@ -1,50 +1,34 @@
 import { Stack } from 'expo-router'
-import * as SplashScreen from 'expo-splash-screen'
-import { useEffect } from 'react'
 import { GestureHandlerRootView } from 'react-native-gesture-handler'
 
-import { useLoading } from '@/hooks'
 import { queryClient } from '@/lib'
+import { useSessionStore } from '@/stores'
 import { QueryClientProvider } from '@tanstack/react-query'
 
-export default function RootLayout() {
-  const { loading } = useLoading()
-
-  useEffect(() => {
-    if (loading) {
-      return
-    }
-
-    SplashScreen.hideAsync()
-  }, [loading])
-
-  if (loading) {
-    console.log('[RootLayout] Loading...')
-    return null
-  }
-
+function RootLayout() {
   return (
     <GestureHandlerRootView>
       <QueryClientProvider client={queryClient}>
-        <Stack
-          screenOptions={{
-            headerStyle: {
-              backgroundColor: '#1D1D1D'
-            },
-            headerTintColor: '#FAFAFA',
-            headerTitleStyle: {
-              fontWeight: 'bold'
-            }
-          }}
-        >
-          <Stack.Screen
-            name="(tabs)"
-            options={{
-              headerShown: false
-            }}
-          />
-        </Stack>
+        <RootStack />
       </QueryClientProvider>
     </GestureHandlerRootView>
   )
 }
+
+function RootStack() {
+  const user = useSessionStore(state => state.user)
+
+  return (
+    <Stack screenOptions={{ headerShown: false }}>
+      <Stack.Protected guard={!!user}>
+        <Stack.Screen name="(app)" />
+      </Stack.Protected>
+
+      <Stack.Protected guard={!user}>
+        <Stack.Screen name="(auth)" />
+      </Stack.Protected>
+    </Stack>
+  )
+}
+
+export default RootLayout
