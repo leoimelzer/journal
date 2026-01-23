@@ -25,24 +25,24 @@ export default function RootLayout() {
   return (
     <GestureHandlerRootView>
       <QueryClientProvider client={queryClient}>
-          <Stack
-            screenOptions={{
-              headerStyle: {
-                backgroundColor: '#1D1D1D',
-              },
-              headerTintColor: '#FAFAFA',
-              headerTitleStyle: {
-                fontWeight: 'bold',
-              },
+        <Stack
+          screenOptions={{
+            headerStyle: {
+              backgroundColor: '#1D1D1D',
+            },
+            headerTintColor: '#FAFAFA',
+            headerTitleStyle: {
+              fontWeight: 'bold',
+            },
+          }}
+        >
+          <Stack.Screen
+            name="(tabs)"
+            options={{
+              headerShown: false
             }}
-          >
-            <Stack.Screen
-              name="(tabs)"
-              options={{
-                headerShown: false
-              }}
-            />
-          </Stack>
+          />
+        </Stack>
       </QueryClientProvider>
     </GestureHandlerRootView>
   );
