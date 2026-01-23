@@ -1,5 +1,6 @@
 import { Stack } from 'expo-router'
 import { GestureHandlerRootView } from 'react-native-gesture-handler'
+import { KeyboardProvider } from 'react-native-keyboard-controller'
 
 import { queryClient } from '@/lib'
 import { useSessionStore } from '@/stores'
@@ -7,11 +8,13 @@ import { QueryClientProvider } from '@tanstack/react-query'
 
 function RootLayout() {
   return (
-    <GestureHandlerRootView>
-      <QueryClientProvider client={queryClient}>
-        <RootStack />
-      </QueryClientProvider>
-    </GestureHandlerRootView>
+    <QueryClientProvider client={queryClient}>
+      <KeyboardProvider>
+        <GestureHandlerRootView>
+          <RootStack />
+        </GestureHandlerRootView>
+      </KeyboardProvider>
+    </QueryClientProvider>
   )
 }
 
