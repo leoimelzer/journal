@@ -1,6 +1,6 @@
-import { AxiosInstance } from 'axios'
+import type { AxiosInstance } from 'axios'
 
-import { UUID } from '@/types'
+import type { UUID } from '@/types'
 
 export class User {
   private instance: AxiosInstance

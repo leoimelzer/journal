@@ -1,7 +1,7 @@
-import { AxiosInstance } from 'axios'
+import type { AxiosInstance } from 'axios'
 
-import { Privacy } from '@/enums'
-import { UUID } from '@/types'
+import type { Privacy } from '@/enums'
+import type { UUID } from '@/types'
 
 export class Entry {
   private instance: AxiosInstance
