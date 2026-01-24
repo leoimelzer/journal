@@ -1,5 +1,5 @@
 import { Tabs } from 'expo-router'
-import { ComponentProps } from 'react'
+import type { ComponentProps } from 'react'
 
 import { MaterialCommunityIcons } from '@expo/vector-icons'
 
@@ -26,10 +26,7 @@ export default function TabsLayout() {
       })}
     >
       <Tabs.Screen name="home" options={{ title: 'Home' }} />
-      <Tabs.Screen
-        name="(navigation)"
-        options={{ headerShown: false, title: 'Navigation' }}
-      />
+      <Tabs.Screen name="(navigation)" options={{ title: 'Navigation' }} />
       <Tabs.Screen name="settings" options={{ title: 'Settings' }} />
     </Tabs>
   )

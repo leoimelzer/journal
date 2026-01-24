@@ -1,6 +1,8 @@
+import { useEffect } from 'react'
 import { View, Text, ActivityIndicator } from 'react-native'
 
 import { api } from '@/lib'
+import { useSessionStore } from '@/stores'
 import { useQuery } from '@tanstack/react-query'
 
 export default function HomeScreen() {
@@ -12,6 +14,12 @@ export default function HomeScreen() {
       return response.data
     }
   })
+
+  const user = useSessionStore(state => state.user)
+
+  useEffect(() => {
+    console.log('user', user)
+  }, [user])
 
   if (isLoading) {
     return <ActivityIndicator />

@@ -23,8 +23,8 @@ export default function App() {
   }
 
   if (!user) {
-    return <Redirect href="/(auth)/sign-in" />
+    return <Redirect href="/sign-in" />
   }
 
-  return <Redirect href="/(app)/(tabs)/home" />
+  return <Redirect href="/sign-out" />
 }

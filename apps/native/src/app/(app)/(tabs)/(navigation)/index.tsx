@@ -1,35 +1,18 @@
-import { Link, useRouter } from 'expo-router'
+import { Link } from 'expo-router'
 import { View, Text, StyleSheet } from 'react-native'
 import { Pressable } from 'react-native-gesture-handler'
 
 export default function NavigationScreen() {
-  const router = useRouter()
-
   return (
     <View style={styles.container}>
       <View>
         <Text style={styles.route}>/details</Text>
 
-        <Link
-          href={{
-            pathname: '/details'
-          }}
-        >
-          Link
+        <Link asChild href={{ pathname: '/details' }}>
+          <Pressable>
+            <Text>Link</Text>
+          </Pressable>
         </Link>
-      </View>
-
-      <View>
-        <Text style={styles.route}>/record</Text>
-
-        <Pressable
-          onPress={() => {
-            const id = 'Bacon'
-            router.push(`/record/${id}`)
-          }}
-        >
-          <Text>Tap to navigate...</Text>
-        </Pressable>
       </View>
     </View>
   )

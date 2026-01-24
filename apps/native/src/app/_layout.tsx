@@ -1,37 +1,22 @@
 import { Stack } from 'expo-router'
+import { StatusBar } from 'expo-status-bar'
 import { GestureHandlerRootView } from 'react-native-gesture-handler'
 import { KeyboardProvider } from 'react-native-keyboard-controller'
+import Toastify from 'toastify-react-native'
 
 import { queryClient } from '@/lib'
-import { useSessionStore } from '@/stores'
 import { QueryClientProvider } from '@tanstack/react-query'
 
-function RootLayout() {
+export default function RootLayout() {
   return (
     <QueryClientProvider client={queryClient}>
       <KeyboardProvider>
         <GestureHandlerRootView>
-          <RootStack />
+          <Toastify />
+          <StatusBar />
+          <Stack screenOptions={{ headerShown: false }} />
         </GestureHandlerRootView>
       </KeyboardProvider>
     </QueryClientProvider>
   )
 }
-
-function RootStack() {
-  const user = useSessionStore(state => state.user)
-
-  return (
-    <Stack screenOptions={{ headerShown: false }}>
-      <Stack.Protected guard={!!user}>
-        <Stack.Screen name="(app)" />
-      </Stack.Protected>
-
-      <Stack.Protected guard={!user}>
-        <Stack.Screen name="(auth)" />
-      </Stack.Protected>
-    </Stack>
-  )
-}
-
-export default RootLayout
