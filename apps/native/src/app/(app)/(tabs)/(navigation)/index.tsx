@@ -1,8 +1,6 @@
 import { Link, useRouter } from 'expo-router'
-import { View, Text } from 'react-native'
+import { View, Text, StyleSheet } from 'react-native'
 import { Pressable } from 'react-native-gesture-handler'
-
-import { styles } from './styles'
 
 export default function NavigationScreen() {
   const router = useRouter()
@@ -36,3 +34,15 @@ export default function NavigationScreen() {
     </View>
   )
 }
+
+const styles = StyleSheet.create({
+  container: {
+    marginHorizontal: 18,
+    marginVertical: 18,
+    gap: 10
+  },
+  route: {
+    fontSize: 18,
+    fontWeight: 'bold'
+  }
+})
