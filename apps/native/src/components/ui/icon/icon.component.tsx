@@ -1,22 +1,20 @@
-import { useColorScheme } from 'react-native'
-
-import { colors } from '@/constants'
+import { useTheme } from '@/hooks'
 import { MaterialCommunityIcons } from '@expo/vector-icons'
 
-import { getStyles } from './icon.styles'
+import { styles } from './icon.styles'
 import type { IconProps } from './icon.types'
 
 export function Icon(props: IconProps) {
-  const styles = getStyles()
+  const { size, color, style, ...rest } = props
 
-  const colorScheme = useColorScheme() ?? 'light'
+  const theme = useTheme()
 
   return (
     <MaterialCommunityIcons
-      {...props}
-      size={props.size ?? 24}
-      color={props.color ?? colors[colorScheme].text}
-      style={[styles.container, props.style]}
+      {...rest}
+      size={size ?? 24}
+      color={color ?? theme.colors.text.primary}
+      style={[styles.icon, style]}
     />
   )
 }

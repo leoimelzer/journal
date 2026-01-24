@@ -1,10 +1,9 @@
 import { StyleSheet } from 'react-native'
 
-import { IconStyles } from './icon.types'
+import type { IconStyles } from './icon.types'
 
-export const getStyles = () =>
-  StyleSheet.create<IconStyles>({
-    container: {
-      opacity: 0.8
-    }
-  })
+export const styles = StyleSheet.create<IconStyles>({
+  icon: {
+    opacity: 0.8
+  }
+})
