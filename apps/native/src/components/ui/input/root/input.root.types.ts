@@ -1,3 +1,7 @@
-import type { ViewProps } from 'react-native'
+import type { ViewProps, ViewStyle } from 'react-native'
 
 export interface InputRootProps extends ViewProps {}
+
+export interface InputRootStyles {
+  container: ViewStyle
+}

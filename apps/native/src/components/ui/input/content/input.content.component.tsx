@@ -14,7 +14,7 @@ export function InputContent(props: InputContentProps) {
     <View
       {...rest}
       style={[
-        styles.field,
+        styles.container,
         [
           {
             borderColor: theme.colors.border,

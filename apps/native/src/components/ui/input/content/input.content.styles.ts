@@ -3,7 +3,7 @@ import { StyleSheet } from 'react-native'
 import type { InputContentStyles } from './input.content.types'
 
 export const styles = StyleSheet.create<InputContentStyles>({
-  field: {
+  container: {
     flexDirection: 'row',
     alignItems: 'center',
     borderWidth: 1,
