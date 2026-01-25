@@ -111,7 +111,7 @@ export default function SignInScreen() {
 
         <Button
           loading={isSubmitting}
-          style={{ marginTop: 12 }}
+          style={{ marginTop: 16 }}
           onPress={submit}
         >
           <Button.Icon name="login" />

@@ -5,6 +5,6 @@ import type { InputStyles } from './input.types'
 export const styles = StyleSheet.create<InputStyles>({
   input: {
     flex: 1,
-    paddingVertical: 16
+    paddingVertical: 14
   }
 })
