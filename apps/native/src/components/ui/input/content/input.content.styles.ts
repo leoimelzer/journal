@@ -7,7 +7,6 @@ export const styles = StyleSheet.create<InputContentStyles>({
     flexDirection: 'row',
     alignItems: 'center',
     borderWidth: 1,
-    borderStyle: 'solid',
     paddingHorizontal: 16,
     borderRadius: 6,
     borderLeftWidth: 1,

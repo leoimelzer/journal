@@ -1,7 +1,3 @@
-import type { TextProps, TextStyle } from 'react-native'
+import type { TextProps } from 'react-native'
 
 export interface InputErrorProps extends TextProps {}
-
-export interface InputErrorStyles {
-  error: TextStyle
-}

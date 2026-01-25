@@ -1,53 +1,57 @@
-import { useCallback, useState } from 'react'
+import { useCallback } from 'react'
+import type { FieldErrors } from 'react-hook-form'
+import { useForm, Controller } from 'react-hook-form'
 import type { ViewStyle } from 'react-native'
 import { StyleSheet } from 'react-native'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-controller'
 import { Toast } from 'toastify-react-native'
-import { z, ZodError } from 'zod'
+import { z } from 'zod'
 
 import { Button, Form, Input } from '@/components'
 import { useTheme } from '@/hooks'
 import { useSessionStore } from '@/stores'
+import { zodResolver } from '@hookform/resolvers/zod'
 
 const schema = z.object({
   login: z.string().nonempty('Enter your username'),
   password: z.string().nonempty('Enter your password')
 })
 
+type Data = z.infer<typeof schema>
+
 export default function SignInScreen() {
-  const [login, setLogin] = useState('')
-
-  const [password, setPassword] = useState('')
-
-  const [submitting, setSubmitting] = useState(false)
-
   const signIn = useSessionStore(state => state.signIn)
 
   const theme = useTheme()
 
-  const submit = useCallback(async () => {
-    try {
-      setSubmitting(true)
-
-      schema.parse({
-        login,
-        password
-      })
-
-      await signIn()
-    } catch (error) {
-      if (error instanceof ZodError) {
-        const [issue] = error.issues
-        const message = issue.message
-        Toast.error(message)
-        return
-      }
-
-      throw error
-    } finally {
-      setSubmitting(false)
+  const {
+    control,
+    handleSubmit,
+    formState: { isSubmitting }
+  } = useForm<Data>({
+    resolver: zodResolver(schema),
+    defaultValues: {
+      login: '',
+      password: ''
     }
-  }, [login, password, signIn])
+  })
+
+  const submit = useCallback(
+    async (_data: Data) => {
+      try {
+        console.log('_data', _data)
+        await signIn()
+      } catch {
+        Toast.error('Unexpected error.')
+      }
+    },
+    [signIn]
+  )
+
+  const onError = (errors: FieldErrors<Data>) => {
+    const [error] = Object.values(errors)
+    Toast.error(String(error.message))
+  }
 
   return (
     <KeyboardAwareScrollView
@@ -61,10 +65,16 @@ export default function SignInScreen() {
           <Input.Content>
             <Input.Icon name="account-outline" />
 
-            <Input
-              placeholder="Type your username"
-              value={login}
-              onChangeText={setLogin}
+            <Controller
+              control={control}
+              name="login"
+              render={({ field: { onChange, value } }) => (
+                <Input
+                  placeholder="Type your username"
+                  value={value}
+                  onChangeText={onChange}
+                />
+              )}
             />
           </Input.Content>
         </Input.Root>
@@ -75,16 +85,22 @@ export default function SignInScreen() {
           <Input.Content>
             <Input.Icon name="lock-outline" />
 
-            <Input
-              placeholder="Type your username"
-              value={password}
-              onChangeText={setPassword}
-              secureTextEntry
+            <Controller
+              control={control}
+              name="password"
+              render={({ field: { onChange, value } }) => (
+                <Input
+                  placeholder="Type your password"
+                  value={value}
+                  onChangeText={onChange}
+                  secureTextEntry
+                />
+              )}
             />
           </Input.Content>
         </Input.Root>
 
-        <Button loading={submitting} onPress={submit}>
+        <Button loading={isSubmitting} onPress={handleSubmit(submit, onError)}>
           <Button.Icon name="login" />
           <Button.Text style={{ color: theme.colors.text.primary }}>
             Sign in
