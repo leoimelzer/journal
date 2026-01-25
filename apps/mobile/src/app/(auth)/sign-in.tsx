@@ -1,7 +1,7 @@
-import { useCallback } from 'react'
+import { createRef, useCallback } from 'react'
 import type { FieldErrors } from 'react-hook-form'
 import { useForm, Controller } from 'react-hook-form'
-import type { ViewStyle } from 'react-native'
+import type { TextInput, ViewStyle } from 'react-native'
 import { StyleSheet } from 'react-native'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-controller'
 import { Toast } from 'toastify-react-native'
@@ -13,7 +13,7 @@ import { useSessionStore } from '@/stores'
 import { zodResolver } from '@hookform/resolvers/zod'
 
 const schema = z.object({
-  login: z.string().nonempty('Enter your username'),
+  login: z.string().nonempty('Enter your login'),
   password: z.string().nonempty('Enter your password')
 })
 
@@ -23,6 +23,10 @@ export default function SignInScreen() {
   const signIn = useSessionStore(state => state.signIn)
 
   const theme = useTheme()
+
+  const loginRef = createRef<TextInput>()
+
+  const passwordRef = createRef<TextInput>()
 
   const {
     control,
@@ -36,10 +40,9 @@ export default function SignInScreen() {
     }
   })
 
-  const submit = useCallback(
+  const onValid = useCallback(
     async (_data: Data) => {
       try {
-        console.log('_data', _data)
         await signIn()
       } catch {
         Toast.error('Unexpected error.')
@@ -48,10 +51,15 @@ export default function SignInScreen() {
     [signIn]
   )
 
-  const onError = (errors: FieldErrors<Data>) => {
+  const onInvalid = useCallback((errors: FieldErrors<Data>) => {
     const [error] = Object.values(errors)
     Toast.error(String(error.message))
-  }
+  }, [])
+
+  const submit = useCallback(
+    async () => handleSubmit(onValid, onInvalid)(),
+    [handleSubmit, onValid, onInvalid]
+  )
 
   return (
     <KeyboardAwareScrollView
@@ -60,19 +68,25 @@ export default function SignInScreen() {
     >
       <Form>
         <Input.Root>
-          <Input.Label>Username</Input.Label>
-
           <Input.Content>
-            <Input.Icon name="account-outline" />
-
             <Controller
               control={control}
               name="login"
               render={({ field: { onChange, value } }) => (
                 <Input
-                  placeholder="Type your username"
+                  ref={loginRef}
+                  placeholder="Login"
                   value={value}
                   onChangeText={onChange}
+                  onSubmitEditing={() => {
+                    const password = passwordRef.current
+
+                    if (!value || !password) {
+                      return
+                    }
+
+                    password.focus()
+                  }}
                 />
               )}
             />
@@ -80,20 +94,18 @@ export default function SignInScreen() {
         </Input.Root>
 
         <Input.Root>
-          <Input.Label>Password</Input.Label>
-
           <Input.Content>
-            <Input.Icon name="lock-outline" />
-
             <Controller
               control={control}
               name="password"
               render={({ field: { onChange, value } }) => (
                 <Input
-                  placeholder="Type your password"
+                  ref={passwordRef}
+                  placeholder="Password"
                   value={value}
                   onChangeText={onChange}
                   secureTextEntry
+                  onSubmitEditing={submit}
                 />
               )}
             />
@@ -103,7 +115,7 @@ export default function SignInScreen() {
         <Button
           loading={isSubmitting}
           style={{ marginTop: 12 }}
-          onPress={handleSubmit(submit, onError)}
+          onPress={submit}
         >
           <Button.Icon name="login" />
           <Button.Text style={{ color: theme.colors.text.primary }}>
