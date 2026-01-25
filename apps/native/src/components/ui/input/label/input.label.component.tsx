@@ -1,9 +1,16 @@
-import { Text } from 'react-native'
+import { useTheme } from '@/hooks'
 
+import { Text } from '../../text'
 import type { InputLabelProps } from './input.label.types'
 
 export function InputLabel(props: InputLabelProps) {
-  const { children, ...rest } = props
+  const { style, children, ...rest } = props
 
-  return <Text {...rest}>{children}</Text>
+  const theme = useTheme()
+
+  return (
+    <Text {...rest} style={[{ color: theme.colors.text.secondary }, style]}>
+      {children}
+    </Text>
+  )
 }

@@ -1,6 +1,8 @@
 import { Link } from 'expo-router'
-import { View, Text, StyleSheet } from 'react-native'
+import { View, StyleSheet } from 'react-native'
 import { Pressable } from 'react-native-gesture-handler'
+
+import { Text } from '@/components'
 
 export default function NavigationScreen() {
   return (

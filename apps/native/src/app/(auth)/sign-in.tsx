@@ -100,7 +100,11 @@ export default function SignInScreen() {
           </Input.Content>
         </Input.Root>
 
-        <Button loading={isSubmitting} onPress={handleSubmit(submit, onError)}>
+        <Button
+          loading={isSubmitting}
+          style={{ marginTop: 12 }}
+          onPress={handleSubmit(submit, onError)}
+        >
           <Button.Icon name="login" />
           <Button.Text style={{ color: theme.colors.text.primary }}>
             Sign in

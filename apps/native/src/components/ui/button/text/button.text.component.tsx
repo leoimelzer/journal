@@ -1,5 +1,4 @@
-import { Text } from 'react-native'
-
+import { Text } from '../../text/text.component'
 import { styles } from './button.text.styles'
 import type { ButtonTextProps } from './button.text.types'
 

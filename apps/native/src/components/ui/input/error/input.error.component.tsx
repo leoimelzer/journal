@@ -1,7 +1,6 @@
-import { Text } from 'react-native'
-
 import { useTheme } from '@/hooks'
 
+import { Text } from '../../text'
 import type { InputErrorProps } from './input.error.types'
 
 export function InputError(props: InputErrorProps) {
