@@ -22,7 +22,7 @@ export function Button(props: ButtonProps) {
         pressed && styles.pressed,
         isDisabled && styles.disabled,
         {
-          backgroundColor: theme.colors.primary.main
+          backgroundColor: theme.colors.primary
         },
         style
       ]}

@@ -1,16 +1,15 @@
 import { useMemo } from 'react'
-import type { ColorSchemeName } from 'react-native'
 import { useColorScheme } from 'react-native'
 
 import { colors } from '@/constants'
-import type { Theme } from '@/types'
+import type { Colors, Theme } from '@/types'
 
 export function useTheme() {
   const colorScheme = useColorScheme()
 
   const theme: {
-    name: NonNullable<ColorSchemeName>
-    colors: Theme
+    name: Theme
+    colors: Colors
   } = useMemo(() => {
     if (colorScheme === 'dark') {
       return {

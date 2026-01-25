@@ -1,68 +1,82 @@
-import type { Colors } from '@/types/theme'
+import type { Colors, Theme } from '@/types'
 
-export const colors: Colors = {
+export const colors: Record<Theme, Colors> = {
   dark: {
-    primary: {
-      light: '#A78BFA',
-      main: '#7C3AED',
-      dark: '#6B21A8'
-    },
-    secondary: {
-      light: '#6EE7B7',
-      main: '#34D399',
-      dark: '#059669'
-    },
-    accent: {
-      light: '#FDE68A',
-      main: '#FBBF24',
-      dark: '#D97706'
-    },
-    background: '#1F1B24',
-    surface: '#2A2433',
-    border: '#3A2D4E',
+    primary: '#D79921',
+    secondary: '#689D6A',
+    accent: '#B16286',
+    background: '#1B1B1B',
+    surface: '#2A2A2A',
+    border: '#3C3836',
     shadow: 'rgba(0,0,0,0.5)',
     text: {
-      primary: '#F5F5F5',
-      secondary: '#CFCFCF',
-      on_background: '#1F1B24',
-      placeholder: '#A3A3A3'
+      primary: '#EBDBB2',
+      secondary: '#A89984',
+      placeholder: '#7C6F64'
     },
-    semantic: {
-      error: '#F28B82',
-      success: '#A7E8BD',
-      warning: '#FFE29A'
+    error: {
+      background: '#3C1F1F',
+      text: '#FB4934',
+      border: '#FB4934'
+    },
+    success: {
+      background: '#223322',
+      text: '#B8BB26',
+      border: '#B8BB26'
+    },
+    warning: {
+      background: '#3C2F1F',
+      text: '#FABD2F',
+      border: '#FABD2F'
+    },
+    info: {
+      background: '#1F2A33',
+      text: '#83A598',
+      border: '#83A598'
+    },
+    note: {
+      background: '#2A2520',
+      text: '#D5C4A1',
+      border: '#BDAE93'
     }
   },
   light: {
-    primary: {
-      light: '#C4B5FD',
-      main: '#7C3AED',
-      dark: '#5B21B6'
-    },
-    secondary: {
-      light: '#6EE7B7',
-      main: '#10B981',
-      dark: '#047857'
-    },
-    accent: {
-      light: '#FEF3C7',
-      main: '#F59E0B',
-      dark: '#B45309'
-    },
-    background: '#FFF8F2',
-    surface: '#FFFFFF',
-    border: '#E6E1E5',
+    primary: '#D65D0E',
+    secondary: '#689D6A',
+    accent: '#9D7D6C',
+    background: '#FBF1C7',
+    surface: '#F2E5BC',
+    border: '#E0D9B7',
     shadow: 'rgba(0,0,0,0.1)',
     text: {
-      primary: '#1F1B24',
-      secondary: '#6B6174',
-      on_background: '#FFFFFF',
-      placeholder: '#A3A3A3'
+      primary: '#3C3836',
+      secondary: '#7C6F64',
+      placeholder: '#A89984'
     },
-    semantic: {
-      error: '#EF4444',
-      success: '#22C55E',
-      warning: '#FBBF24'
+    error: {
+      background: '#FDDDD6',
+      text: '#CC241D',
+      border: '#CC241D'
+    },
+    success: {
+      background: '#ECF8DC',
+      text: '#98971A',
+      border: '#98971A'
+    },
+    warning: {
+      background: '#FEF3C7',
+      text: '#D79921',
+      border: '#D79921'
+    },
+    info: {
+      background: '#E8F0F2',
+      text: '#458588',
+      border: '#458588'
+    },
+    note: {
+      background: '#FBF1C7',
+      text: '#665C54',
+      border: '#D5C4A1'
     }
   }
 }

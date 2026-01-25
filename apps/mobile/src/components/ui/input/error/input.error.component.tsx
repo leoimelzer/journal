@@ -13,7 +13,7 @@ export function InputError(props: InputErrorProps) {
       {...rest}
       style={[
         {
-          color: theme.colors.semantic.error
+          color: theme.colors.error.text
         },
         style
       ]}

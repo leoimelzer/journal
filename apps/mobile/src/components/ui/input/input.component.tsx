@@ -15,7 +15,7 @@ export const Input = forwardRef<TextInput, InputProps>((props, ref) => {
     <TextInput
       {...rest}
       ref={ref}
-      style={[styles.input, style]}
+      style={[styles.input, { color: theme.colors.text.primary }, style]}
       placeholderTextColor={theme.colors.text.placeholder}
     />
   )

@@ -8,7 +8,6 @@ import { Toast } from 'toastify-react-native'
 import { z } from 'zod'
 
 import { Button, Form, Input } from '@/components'
-import { useTheme } from '@/hooks'
 import { useSessionStore } from '@/stores'
 import { zodResolver } from '@hookform/resolvers/zod'
 
@@ -21,8 +20,6 @@ type Data = z.infer<typeof schema>
 
 export default function SignInScreen() {
   const signIn = useSessionStore(state => state.signIn)
-
-  const theme = useTheme()
 
   const loginRef = createRef<TextInput>()
 
@@ -118,9 +115,7 @@ export default function SignInScreen() {
           onPress={submit}
         >
           <Button.Icon name="login" />
-          <Button.Text style={{ color: theme.colors.text.primary }}>
-            Sign in
-          </Button.Text>
+          <Button.Text>Sign in</Button.Text>
         </Button>
       </Form>
     </KeyboardAwareScrollView>
