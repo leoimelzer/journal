@@ -1,7 +1,7 @@
 import { createContext } from 'react'
 
-import type { ButtonContextProps } from './button.types'
+import type { ButtonContextData } from './button.types'
 
-export const ButtonContext = createContext<ButtonContextProps | undefined>(
+export const ButtonContext = createContext<ButtonContextData | undefined>(
   undefined
 )

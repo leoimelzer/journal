@@ -74,6 +74,8 @@ export default function SignInScreen() {
                   ref={loginRef}
                   placeholder="Login"
                   value={value}
+                  autoCapitalize="none"
+                  autoCorrect={false}
                   onChangeText={onChange}
                   onSubmitEditing={() => {
                     const password = passwordRef.current
@@ -102,6 +104,8 @@ export default function SignInScreen() {
                   value={value}
                   onChangeText={onChange}
                   secureTextEntry
+                  autoCapitalize="none"
+                  autoCorrect={false}
                   onSubmitEditing={submit}
                 />
               )}
@@ -114,7 +118,6 @@ export default function SignInScreen() {
           style={{ marginTop: 16 }}
           onPress={submit}
         >
-          <Button.Icon name="login" />
           <Button.Text font="medium">Sign in</Button.Text>
         </Button>
       </Form>

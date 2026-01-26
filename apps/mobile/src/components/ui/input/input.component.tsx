@@ -7,7 +7,7 @@ import { styles } from './input.styles'
 import type { InputProps } from './input.types'
 
 export const Input = forwardRef<TextInput, InputProps>((props, ref) => {
-  const { style, ...rest } = props
+  const { style, placeholderTextColor, ...rest } = props
 
   const theme = useTheme()
 
@@ -15,8 +15,16 @@ export const Input = forwardRef<TextInput, InputProps>((props, ref) => {
     <TextInput
       {...rest}
       ref={ref}
-      style={[styles.input, { color: theme.colors.text.primary }, style]}
-      placeholderTextColor={theme.colors.text.placeholder}
+      style={[
+        styles.input,
+        {
+          color: theme.colors.text.primary
+        },
+        style
+      ]}
+      placeholderTextColor={
+        placeholderTextColor ?? theme.colors.text.placeholder
+      }
     />
   )
 })
