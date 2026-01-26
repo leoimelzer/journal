@@ -2,12 +2,12 @@ import type { Colors, Theme } from '@/types'
 
 export const colors: Record<Theme, Colors> = {
   dark: {
-    primary: '#D79921',
+    primary: '#83A598',
     secondary: '#689D6A',
     accent: '#B16286',
     neutral: '#EBDBB2',
     background: '#1B1B1B',
-    card: '#2A2A2A',
+    card: '#32302F',
     border: '#3C3836',
     shadow: 'rgba(0,0,0,0.5)',
     text: {
@@ -42,9 +42,9 @@ export const colors: Record<Theme, Colors> = {
     }
   },
   light: {
-    primary: '#D65D0E',
+    primary: '#83A598',
     secondary: '#689D6A',
-    accent: '#9D7D6C',
+    accent: '#B16286',
     neutral: '#3C3836',
     background: '#FBF1C7',
     card: '#F2E5BC',
