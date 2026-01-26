@@ -9,7 +9,7 @@ export default function AuthLayout() {
   const theme = useTheme()
 
   if (user) {
-    return <Redirect href="/sign-out" />
+    return <Redirect href="/sample" />
   }
 
   return (

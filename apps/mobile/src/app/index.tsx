@@ -26,5 +26,5 @@ export default function App() {
     return <Redirect href="/sign-in" />
   }
 
-  return <Redirect href="/sign-out" />
+  return <Redirect href="/sample" />
 }

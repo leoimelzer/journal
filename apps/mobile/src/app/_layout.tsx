@@ -11,7 +11,7 @@ export default function RootLayout() {
   return (
     <QueryClientProvider client={queryClient}>
       <KeyboardProvider>
-        <GestureHandlerRootView style={{ flex: 1 }}>
+        <GestureHandlerRootView>
           <Toastify />
           <StatusBar />
           <Stack screenOptions={{ headerShown: false }} />
