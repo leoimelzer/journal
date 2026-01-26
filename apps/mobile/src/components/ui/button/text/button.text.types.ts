@@ -1,3 +1,3 @@
-import type { TextProps } from 'react-native'
+import type { TextProps } from '../../text/text.types'
 
 export interface ButtonTextProps extends TextProps {}

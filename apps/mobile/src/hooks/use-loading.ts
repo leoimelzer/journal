@@ -6,6 +6,7 @@ import { useEffect, useMemo } from 'react'
 import { locale } from '@/i18n'
 import { useSessionStore } from '@/stores'
 import {
+  Inter_300Light,
   Inter_400Regular,
   Inter_500Medium,
   Inter_600SemiBold,
@@ -24,6 +25,7 @@ export function useLoading() {
   const sessionLoading = useSessionStore(state => state.loading)
 
   const [fonts] = useFonts({
+    Inter_300Light,
     Inter_400Regular,
     Inter_500Medium,
     Inter_600SemiBold,

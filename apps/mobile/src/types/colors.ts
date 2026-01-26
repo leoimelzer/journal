@@ -1,15 +1,10 @@
-interface Semantic {
-  background: string
-  text: string
-  border: string
-}
-
 export interface Colors {
   primary: string
   secondary: string
   accent: string
+  neutral: string
   background: string
-  surface: string
+  card: string
   border: string
   shadow: string
   text: {
@@ -17,9 +12,29 @@ export interface Colors {
     secondary: string
     placeholder: string
   }
-  success: Semantic
-  error: Semantic
-  warning: Semantic
-  info: Semantic
-  note: Semantic
+  success: {
+    background: string
+    text: string
+    border: string
+  }
+  error: {
+    background: string
+    text: string
+    border: string
+  }
+  warning: {
+    background: string
+    text: string
+    border: string
+  }
+  info: {
+    background: string
+    text: string
+    border: string
+  }
+  note: {
+    background: string
+    text: string
+    border: string
+  }
 }

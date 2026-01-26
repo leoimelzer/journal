@@ -7,7 +7,7 @@ import { styles } from './text.styles'
 import type { TextProps } from './text.types'
 
 export const Text = forwardRef<RNText, TextProps>((props, ref) => {
-  const { style, ...rest } = props
+  const { style, font = 'regular', size = 'normal', color, ...rest } = props
 
   const theme = useTheme()
 
@@ -16,9 +16,10 @@ export const Text = forwardRef<RNText, TextProps>((props, ref) => {
       {...rest}
       ref={ref}
       style={[
-        styles.body,
+        styles[font],
+        styles[size],
         {
-          color: theme.colors.text.primary
+          color: color ?? theme.colors.text.primary
         },
         style
       ]}

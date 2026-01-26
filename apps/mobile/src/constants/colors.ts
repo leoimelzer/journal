@@ -5,8 +5,9 @@ export const colors: Record<Theme, Colors> = {
     primary: '#D79921',
     secondary: '#689D6A',
     accent: '#B16286',
+    neutral: '#EBDBB2',
     background: '#1B1B1B',
-    surface: '#2A2A2A',
+    card: '#2A2A2A',
     border: '#3C3836',
     shadow: 'rgba(0,0,0,0.5)',
     text: {
@@ -44,8 +45,9 @@ export const colors: Record<Theme, Colors> = {
     primary: '#D65D0E',
     secondary: '#689D6A',
     accent: '#9D7D6C',
+    neutral: '#3C3836',
     background: '#FBF1C7',
-    surface: '#F2E5BC',
+    card: '#F2E5BC',
     border: '#E0D9B7',
     shadow: 'rgba(0,0,0,0.1)',
     text: {

@@ -18,7 +18,7 @@ export function InputContent(props: InputContentProps) {
         [
           {
             borderColor: theme.colors.border,
-            backgroundColor: theme.colors.surface
+            backgroundColor: theme.colors.card
           }
         ],
         style

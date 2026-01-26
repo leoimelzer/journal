@@ -115,7 +115,7 @@ export default function SignInScreen() {
           onPress={submit}
         >
           <Button.Icon name="login" />
-          <Button.Text>Sign in</Button.Text>
+          <Button.Text font="medium">Sign in</Button.Text>
         </Button>
       </Form>
     </KeyboardAwareScrollView>

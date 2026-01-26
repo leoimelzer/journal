@@ -1,6 +1,8 @@
 import { StyleSheet } from 'react-native'
 
-export const styles = StyleSheet.create({
+import type { ButtonStyles } from './button.types'
+
+export const styles = StyleSheet.create<ButtonStyles>({
   container: {
     height: 50,
     borderRadius: 10,
