@@ -13,10 +13,20 @@ export function ButtonIcon(props: ButtonIconProps) {
   const theme = useTheme()
 
   const colorsForType: Record<Type, string> = {
-    primary: theme.colors.card,
-    secondary: theme.colors.text.primary,
-    accent: theme.colors.text.primary,
-    neutral: theme.colors.background
+    primary: theme.select({
+      dark: theme.colors.card,
+      light: theme.colors.text.primary
+    }),
+    secondary: theme.select({
+      dark: theme.colors.card,
+      light: theme.colors.text.primary
+    }),
+    accent: theme.select({
+      dark: theme.colors.card,
+      light: theme.colors.text.primary
+    }),
+    neutral: theme.colors.text.primary,
+    alert: theme.colors.text.primary
   }
 
   return <Icon {...rest} color={color ?? colorsForType[type]} />

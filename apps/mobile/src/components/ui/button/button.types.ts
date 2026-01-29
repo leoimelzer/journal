@@ -1,6 +1,6 @@
 import type { PressableProps, ViewStyle } from 'react-native'
 
-export type Type = 'primary' | 'secondary' | 'accent' | 'neutral'
+export type Type = 'primary' | 'secondary' | 'accent' | 'neutral' | 'alert'
 
 export interface ButtonContextData {
   type: Type

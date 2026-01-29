@@ -3,10 +3,10 @@ export interface Colors {
   secondary: string
   accent: string
   neutral: string
+  alert: string
   background: string
   card: string
   border: string
-  shadow: string
   text: {
     primary: string
     secondary: string

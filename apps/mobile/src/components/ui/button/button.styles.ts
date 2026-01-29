@@ -4,7 +4,7 @@ import type { ButtonStyles } from './button.types'
 
 export const styles = StyleSheet.create<ButtonStyles>({
   container: {
-    height: 50,
+    height: 48,
     borderRadius: 10,
     flexDirection: 'row',
     alignItems: 'center',
