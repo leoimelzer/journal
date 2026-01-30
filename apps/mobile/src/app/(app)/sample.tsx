@@ -26,7 +26,15 @@ export default function SignOutScreen() {
           text: 'Cancel'
         },
         {
-          text: 'Confirm'
+          text: 'Confirm',
+          onPress: async () => {
+            try {
+              console.log('[saple] Agreeing...')
+              await new Promise(resolve => setTimeout(resolve, 1000))
+            } finally {
+              console.log('[sample] Agreed!')
+            }
+          }
         }
       ]
     })

@@ -39,20 +39,40 @@ export const ModalProvider = ({ children }: PropsWithChildren) => {
     []
   )
 
+  const update = useCallback(
+    (
+      params: Partial<{
+        title: string
+        description: string
+        buttons: ButtonType[]
+      }>
+    ) => {
+      setContent({
+        visible: content.visible,
+        title: params.title ?? content.title,
+        description: params.description ?? content.description,
+        buttons: params.buttons ?? content.buttons
+      })
+    },
+    [content]
+  )
+
   const hide = useCallback(() => {
     setContent(prev => ({ ...prev, visible: false }))
   }, [])
 
   return (
-    <ModalContext.Provider value={{ show, hide }}>
+    <ModalContext.Provider value={{ show, update, hide }}>
       {children}
 
       <Modal
-        backdropOpacity={0.5}
+        backdropOpacity={0.6}
         isVisible={content.visible}
         onBackdropPress={hide}
         animationIn="zoomIn"
         animationOut="zoomOut"
+        renderToHardwareTextureAndroid
+        backdropTransitionOutTiming={1}
       >
         <View
           style={[

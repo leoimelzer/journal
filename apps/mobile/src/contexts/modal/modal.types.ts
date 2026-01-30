@@ -23,6 +23,13 @@ export type ModalContextData = {
     description: string
     buttons: Button[]
   }) => void
+  update: (
+    params: Partial<{
+      title: string
+      description: string
+      buttons: Button[]
+    }>
+  ) => void
   hide: () => void
 }
 

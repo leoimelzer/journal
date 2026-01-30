@@ -7,9 +7,7 @@ const icons: Record<
   string,
   ComponentProps<typeof MaterialCommunityIcons>['name']
 > = {
-  home: 'home-outline',
-  '(navigation)': 'navigation-outline',
-  settings: 'cog-outline'
+  home: 'home-outline'
 }
 
 export default function TabsLayout() {
@@ -26,7 +24,6 @@ export default function TabsLayout() {
       })}
     >
       <Tabs.Screen name="home" options={{ title: 'Home' }} />
-      <Tabs.Screen name="(navigation)" options={{ title: 'Navigation' }} />
       <Tabs.Screen name="settings" options={{ title: 'Settings' }} />
     </Tabs>
   )

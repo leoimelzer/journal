@@ -115,7 +115,7 @@ export default function SignInScreen() {
 
         <Button
           loading={isSubmitting}
-          style={{ marginTop: 16 }}
+          style={{ marginTop: 20 }}
           onPress={submit}
         >
           <Button.Text font="medium">Sign in</Button.Text>
