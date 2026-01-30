@@ -3,7 +3,7 @@ import { ScrollView, View } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 
 import { Button, Icon, Input, Text } from '@/components'
-import { useTheme } from '@/hooks'
+import { useModal, useTheme } from '@/hooks'
 import { useSessionStore } from '@/stores'
 
 export default function SignOutScreen() {
@@ -12,6 +12,25 @@ export default function SignOutScreen() {
   const [signingOut, setSigningOut] = useState(false)
 
   const theme = useTheme()
+
+  const modal = useModal()
+
+  const handleShowModal = useCallback(async () => {
+    modal.show({
+      title: 'Dialog title',
+      description:
+        'A very nice and descriptive description to describe behaviours in useful way',
+      buttons: [
+        {
+          type: 'neutral',
+          text: 'Cancel'
+        },
+        {
+          text: 'Confirm'
+        }
+      ]
+    })
+  }, [modal])
 
   const handleSignOut = useCallback(async () => {
     try {
@@ -204,10 +223,23 @@ export default function SignOutScreen() {
           </View>
         </View>
 
-        <Button type="alert" loading={signingOut} onPress={handleSignOut}>
-          <Button.Icon name="logout" />
-          <Button.Text>Sign out</Button.Text>
-        </Button>
+        <View style={{ gap: 8 }}>
+          <Text size="large" font="bold">
+            Actions
+          </Text>
+
+          <View style={{ gap: 10 }}>
+            <Button onPress={handleShowModal}>
+              <Button.Icon name="form-select" />
+              <Button.Text>Open modal</Button.Text>
+            </Button>
+
+            <Button type="alert" loading={signingOut} onPress={handleSignOut}>
+              <Button.Icon name="logout" />
+              <Button.Text>Sign out</Button.Text>
+            </Button>
+          </View>
+        </View>
       </ScrollView>
     </SafeAreaView>
   )
