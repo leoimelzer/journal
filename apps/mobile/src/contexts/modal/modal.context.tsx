@@ -7,67 +7,44 @@ import { Button, Text } from '@/components'
 import { useTheme } from '@/hooks'
 
 import { styles } from './modal.styles'
-import type {
-  Button as ButtonType,
-  ModalContextData,
-  State
-} from './modal.types'
+import type { ModalContextData, State } from './modal.types'
 
 export const ModalContext = createContext<ModalContextData | undefined>(
   undefined
 )
 
-export const ModalProvider = ({ children }: PropsWithChildren) => {
+export const ModalProvider = (props: PropsWithChildren) => {
+  const [visible, setVisible] = useState(false)
+
   const [content, setContent] = useState<State>({
-    visible: false,
-    title: '',
-    description: '',
+    title: null,
+    description: null,
     buttons: []
   })
 
   const theme = useTheme()
 
-  const show = useCallback(
-    (params: { title: string; description: string; buttons: ButtonType[] }) => {
-      setContent({
-        visible: true,
-        title: params.title,
-        description: params.description,
-        buttons: params.buttons
-      })
-    },
-    []
-  )
+  const show = useCallback((params: Omit<State, 'visible'>) => {
+    setContent({
+      title: params.title,
+      description: params.description,
+      buttons: params.buttons
+    })
 
-  const update = useCallback(
-    (
-      params: Partial<{
-        title: string
-        description: string
-        buttons: ButtonType[]
-      }>
-    ) => {
-      setContent({
-        visible: content.visible,
-        title: params.title ?? content.title,
-        description: params.description ?? content.description,
-        buttons: params.buttons ?? content.buttons
-      })
-    },
-    [content]
-  )
+    setVisible(true)
+  }, [])
 
   const hide = useCallback(() => {
-    setContent(prev => ({ ...prev, visible: false }))
+    setVisible(false)
   }, [])
 
   return (
-    <ModalContext.Provider value={{ show, update, hide }}>
-      {children}
+    <ModalContext.Provider value={{ show, hide }}>
+      {props.children}
 
       <Modal
+        isVisible={visible}
         backdropOpacity={0.6}
-        isVisible={content.visible}
         onBackdropPress={hide}
         animationIn="zoomIn"
         animationOut="zoomOut"
@@ -79,8 +56,7 @@ export const ModalProvider = ({ children }: PropsWithChildren) => {
           style={[
             {
               backgroundColor: theme.colors.card,
-              borderColor: theme.colors.border,
-              borderWidth: 1
+              borderColor: theme.colors.border
             },
             styles.container
           ]}

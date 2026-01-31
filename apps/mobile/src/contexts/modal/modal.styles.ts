@@ -6,7 +6,8 @@ export const styles = StyleSheet.create<ModalContextStyles>({
   container: {
     padding: 20,
     borderRadius: 12,
-    gap: 24
+    gap: 24,
+    borderWidth: 1
   },
   content: {
     gap: 6

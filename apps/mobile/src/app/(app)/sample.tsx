@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react'
+import React, { useCallback, useState } from 'react'
 import { ScrollView, View } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 
@@ -27,13 +27,8 @@ export default function SignOutScreen() {
         },
         {
           text: 'Confirm',
-          onPress: async () => {
-            try {
-              console.log('[saple] Agreeing...')
-              await new Promise(resolve => setTimeout(resolve, 1000))
-            } finally {
-              console.log('[sample] Agreed!')
-            }
+          onPress: () => {
+            console.log('Confirmed.')
           }
         }
       ]
@@ -102,7 +97,10 @@ export default function SignOutScreen() {
                 borderRadius: 12
               }}
             >
-              <Icon name="check-circle" color={theme.colors.success.text} />
+              <Icon
+                name="check-circle-outline"
+                color={theme.colors.success.text}
+              />
               <Text
                 style={{
                   color: theme.colors.success.text
@@ -124,7 +122,10 @@ export default function SignOutScreen() {
                 borderRadius: 12
               }}
             >
-              <Icon name="close-circle" color={theme.colors.error.text} />
+              <Icon
+                name="close-circle-outline"
+                color={theme.colors.error.text}
+              />
               <Text
                 style={{
                   color: theme.colors.error.text
@@ -146,7 +147,7 @@ export default function SignOutScreen() {
                 borderRadius: 12
               }}
             >
-              <Icon name="information" color={theme.colors.info.text} />
+              <Icon name="information-outline" color={theme.colors.info.text} />
               <Text
                 style={{
                   color: theme.colors.info.text
@@ -193,7 +194,7 @@ export default function SignOutScreen() {
                 borderRadius: 12
               }}
             >
-              <Icon name="alert" color={theme.colors.warning.text} />
+              <Icon name="alert-outline" color={theme.colors.warning.text} />
               <Text
                 style={{
                   color: theme.colors.warning.text

@@ -6,30 +6,19 @@ import type { Button as ButtonComponent } from '@/components'
 export type Button = {
   type?: ComponentProps<typeof ButtonComponent>['type']
   loading?: boolean
+  disabled?: boolean
   text: string
   onPress?: () => void | Promise<void>
 }
 
 export type State = {
-  visible: boolean
-  title: string
-  description: string
+  title: string | null
+  description: string | null
   buttons: Button[]
 }
 
 export type ModalContextData = {
-  show: (params: {
-    title: string
-    description: string
-    buttons: Button[]
-  }) => void
-  update: (
-    params: Partial<{
-      title: string
-      description: string
-      buttons: Button[]
-    }>
-  ) => void
+  show: (params: State) => void
   hide: () => void
 }
 
