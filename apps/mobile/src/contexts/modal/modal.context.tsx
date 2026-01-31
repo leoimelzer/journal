@@ -71,6 +71,7 @@ export const ModalProvider = ({ children }: PropsWithChildren) => {
         onBackdropPress={hide}
         animationIn="zoomIn"
         animationOut="zoomOut"
+        useNativeDriver
         renderToHardwareTextureAndroid
         backdropTransitionOutTiming={1}
       >
