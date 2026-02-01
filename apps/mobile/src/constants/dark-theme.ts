@@ -6,9 +6,9 @@ export const darkTheme: Theme = {
     primary: '#7DAEA3',
     secondary: '#89B482',
     accent: '#E0AF68',
-    neutral: '#3F3A35',
+    neutral: '#39342F',
     alert: '#B03434',
-    background: '#2B2A28',
+    background: '#2C2926',
     card: '#242320',
     border: '#3A3632',
     text: {

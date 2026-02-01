@@ -3,43 +3,43 @@ import type { Theme } from '@/types'
 export const lightTheme: Theme = {
   name: 'light',
   colors: {
-    primary: '#6FC2B1',
-    secondary: '#7CB57E',
-    accent: '#E0B467',
-    neutral: '#DCD6C9',
-    alert: '#D05B5B',
-    background: '#F5F3EE',
-    card: '#E8E3D7',
-    border: '#D0C9BD',
+    primary: '#7DAEA3',
+    secondary: '#8CBF8C',
+    accent: '#E6B450',
+    neutral: '#ECE3CF',
+    alert: '#CC5C5C',
+    background: '#FDF6DF',
+    card: '#FAF7F0',
+    border: '#DDD5C3',
     text: {
-      primary: '#2A2A2A',
-      secondary: '#5C5C53',
-      placeholder: '#7C6F64'
+      primary: '#4A433C',
+      secondary: '#6F665C',
+      placeholder: '#9A8F7A'
     },
     error: {
-      background: '#FDE8E6',
-      text: '#C14444',
-      border: '#D9534F'
+      background: '#F6DDD9',
+      text: '#B84444',
+      border: '#DA9A9A'
     },
     success: {
-      background: '#ECF4E1',
-      text: '#4E5F2A',
-      border: '#8FBF3F'
+      background: '#E0EED2',
+      text: '#557433',
+      border: '#A9C67A'
     },
     warning: {
-      background: '#FFF4E1',
-      text: '#B2781F',
-      border: '#D9A441'
+      background: '#F8E7BF',
+      text: '#976B14',
+      border: '#DBB35F'
     },
     info: {
-      background: '#E7F0FA',
-      text: '#3F7D79',
-      border: '#6AA0A0'
+      background: '#E1EDF3',
+      text: '#557F90',
+      border: '#A8C9D6'
     },
     note: {
-      background: '#E9E4D9',
-      text: '#7C6F64',
-      border: '#BDAE93'
+      background: '#F1E8D3',
+      text: '#61584E',
+      border: '#CCC1A8'
     }
   }
 }
