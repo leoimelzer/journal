@@ -99,10 +99,7 @@ export default function SignOutScreen() {
                 borderRadius: 12
               }}
             >
-              <Icon
-                name="check-circle-outline"
-                color={theme.colors.success.text}
-              />
+              <Icon name="check-circle" color={theme.colors.success.text} />
               <Text
                 style={{
                   color: theme.colors.success.text
@@ -124,10 +121,7 @@ export default function SignOutScreen() {
                 borderRadius: 12
               }}
             >
-              <Icon
-                name="close-circle-outline"
-                color={theme.colors.error.text}
-              />
+              <Icon name="x-circle" color={theme.colors.error.text} />
               <Text
                 style={{
                   color: theme.colors.error.text
@@ -149,7 +143,7 @@ export default function SignOutScreen() {
                 borderRadius: 12
               }}
             >
-              <Icon name="information-outline" color={theme.colors.info.text} />
+              <Icon name="info" color={theme.colors.info.text} />
               <Text
                 style={{
                   color: theme.colors.info.text
@@ -171,10 +165,7 @@ export default function SignOutScreen() {
                 borderRadius: 12
               }}
             >
-              <Icon
-                name="notification-clear-all"
-                color={theme.colors.note.text}
-              />
+              <Icon name="message-circle" color={theme.colors.note.text} />
               <Text
                 style={{
                   color: theme.colors.note.text
@@ -196,7 +187,7 @@ export default function SignOutScreen() {
                 borderRadius: 12
               }}
             >
-              <Icon name="alert-outline" color={theme.colors.warning.text} />
+              <Icon name="alert-circle" color={theme.colors.warning.text} />
               <Text
                 style={{
                   color: theme.colors.warning.text
@@ -241,45 +232,39 @@ export default function SignOutScreen() {
 
           <Button type="neutral" onPress={() => settings.theme.set(null)}>
             <View style={{ flex: 1, flexDirection: 'row', gap: 6 }}>
-              <Button.Icon name="theme-light-dark" />
+              <Button.Icon name="star" />
               <Button.Text>Auto</Button.Text>
             </View>
 
             <Button.Icon
               name={
-                settings.theme.current === 'auto'
-                  ? 'checkbox-marked-circle-outline'
-                  : 'checkbox-blank-circle-outline'
+                settings.theme.current === 'auto' ? 'check-circle' : 'circle'
               }
             />
           </Button>
 
           <Button type="neutral" onPress={() => settings.theme.set('dark')}>
             <View style={{ flex: 1, flexDirection: 'row', gap: 6 }}>
-              <Button.Icon name="weather-night" />
+              <Button.Icon name="moon" />
               <Button.Text>Dark</Button.Text>
             </View>
 
             <Button.Icon
               name={
-                settings.theme.current === 'dark'
-                  ? 'checkbox-marked-circle-outline'
-                  : 'checkbox-blank-circle-outline'
+                settings.theme.current === 'dark' ? 'check-circle' : 'circle'
               }
             />
           </Button>
 
           <Button type="neutral" onPress={() => settings.theme.set('light')}>
             <View style={{ flex: 1, flexDirection: 'row', gap: 6 }}>
-              <Button.Icon name="weather-sunny" />
+              <Button.Icon name="sun" />
               <Button.Text>Light</Button.Text>
             </View>
 
             <Button.Icon
               name={
-                settings.theme.current === 'light'
-                  ? 'checkbox-marked-circle-outline'
-                  : 'checkbox-blank-circle-outline'
+                settings.theme.current === 'light' ? 'check-circle' : 'circle'
               }
             />
           </Button>
@@ -292,12 +277,12 @@ export default function SignOutScreen() {
 
           <View style={{ gap: 10 }}>
             <Button onPress={handleShowModal}>
-              <Button.Icon name="form-select" />
+              <Button.Icon name="edit" />
               <Button.Text>Open modal</Button.Text>
             </Button>
 
             <Button type="alert" loading={signingOut} onPress={handleSignOut}>
-              <Button.Icon name="logout" />
+              <Button.Icon name="log-out" />
               <Button.Text>Sign out</Button.Text>
             </Button>
           </View>

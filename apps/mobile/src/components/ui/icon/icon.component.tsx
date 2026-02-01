@@ -1,5 +1,5 @@
 import { useTheme } from '@/hooks'
-import { MaterialCommunityIcons } from '@expo/vector-icons'
+import { Feather } from '@expo/vector-icons'
 
 import { styles } from './icon.styles'
 import type { IconProps } from './icon.types'
@@ -10,7 +10,7 @@ export function Icon(props: IconProps) {
   const theme = useTheme()
 
   return (
-    <MaterialCommunityIcons
+    <Feather
       {...rest}
       size={size ?? 24}
       color={color ?? theme.colors.text.primary}

@@ -1,13 +1,10 @@
 import { Tabs } from 'expo-router'
 import type { ComponentProps } from 'react'
 
-import { MaterialCommunityIcons } from '@expo/vector-icons'
+import { Feather } from '@expo/vector-icons'
 
-const icons: Record<
-  string,
-  ComponentProps<typeof MaterialCommunityIcons>['name']
-> = {
-  home: 'home-outline'
+const icons: Record<string, ComponentProps<typeof Feather>['name']> = {
+  home: 'home'
 }
 
 export default function TabsLayout() {
@@ -15,11 +12,7 @@ export default function TabsLayout() {
     <Tabs
       screenOptions={({ route }) => ({
         tabBarIcon: ({ color, size }) => (
-          <MaterialCommunityIcons
-            name={icons[route.name]}
-            size={size}
-            color={color}
-          />
+          <Feather name={icons[route.name]} size={size} color={color} />
         )
       })}
     >

@@ -12,7 +12,7 @@ import {
   Inter_600SemiBold,
   Inter_700Bold
 } from '@expo-google-fonts/inter'
-import { MaterialCommunityIcons } from '@expo/vector-icons'
+import { Feather } from '@expo/vector-icons'
 
 import 'dayjs/locale/pt-br'
 
@@ -30,7 +30,7 @@ export function useLoading() {
     Inter_500Medium,
     Inter_600SemiBold,
     Inter_700Bold,
-    ...MaterialCommunityIcons.font
+    ...Feather.font
   })
 
   const loading = useMemo(
