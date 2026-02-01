@@ -1,7 +1,7 @@
 import type { Theme } from '@/types'
 
 export const lightTheme: Theme = {
-  name: 'light',
+  dark: false,
   colors: {
     primary: '#7DAEA3',
     secondary: '#8CBF8C',

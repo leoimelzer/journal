@@ -1,7 +1,5 @@
 import { createContext } from 'react'
 
-import type { ThemeContextData } from './theme.types'
+import type { Theme } from '@/types'
 
-export const ThemeContext = createContext<ThemeContextData | undefined>(
-  undefined
-)
+export const ThemeContext = createContext<Theme | undefined>(undefined)

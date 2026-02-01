@@ -1,7 +1,5 @@
-import type { ColorSchemeName } from 'react-native'
-
 export interface Theme {
-  name: NonNullable<ColorSchemeName>
+  dark: boolean
   colors: {
     primary: string
     secondary: string

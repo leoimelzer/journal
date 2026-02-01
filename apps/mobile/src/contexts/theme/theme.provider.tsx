@@ -1,16 +1,18 @@
 import { StatusBar } from 'expo-status-bar'
 import React, { useMemo, useEffect } from 'react'
-import type { ReactNode } from 'react'
+import type { PropsWithChildren } from 'react'
 import { useColorScheme } from 'react-native'
 
 import { darkTheme, lightTheme } from '@/constants'
 import { useSettings } from '@/hooks'
 
 import { ThemeContext } from './theme.context'
-import type { ThemeContextData } from './theme.types'
 
-export function ThemeProvider({ children }: { children: ReactNode }) {
+export function ThemeProvider(props: PropsWithChildren) {
+  const { children } = props
+
   const colorScheme = useColorScheme()
+
   const settings = useSettings()
 
   const theme = useMemo(() => {
@@ -40,17 +42,11 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
     })()
   }, [settings.theme])
 
-  const set: ThemeContextData['set'] = name => {
-    settings.theme.set(name)
-  }
-
-  const select: ThemeContextData['select'] = values => values[theme.name]
-
   return (
-    <ThemeContext.Provider value={{ theme, set, select }}>
+    <ThemeContext.Provider value={theme}>
       {children}
 
-      <StatusBar style={theme.name === 'dark' ? 'light' : 'dark'} />
+      <StatusBar style={theme.dark ? 'light' : 'dark'} />
     </ThemeContext.Provider>
   )
 }
