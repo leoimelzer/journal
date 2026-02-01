@@ -1,17 +1,14 @@
 import type { PropsWithChildren } from 'react'
-import { createContext, useState, useCallback } from 'react'
+import { useState, useCallback } from 'react'
 import { View } from 'react-native'
 import Modal from 'react-native-modal'
 
 import { Button, Text } from '@/components'
 import { useTheme } from '@/hooks'
 
+import { ModalContext } from './modal.context'
 import { styles } from './modal.styles'
-import type { ModalContextData, State } from './modal.types'
-
-export const ModalContext = createContext<ModalContextData | undefined>(
-  undefined
-)
+import type { State } from './modal.types'
 
 export const ModalProvider = (props: PropsWithChildren) => {
   const [visible, setVisible] = useState(false)

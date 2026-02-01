@@ -3,7 +3,7 @@ import { ScrollView, View } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 
 import { Button, Icon, Input, Text } from '@/components'
-import { useModal, useTheme } from '@/hooks'
+import { useModal, useSettings, useTheme } from '@/hooks'
 import { useSessionStore } from '@/stores'
 
 export default function SignOutScreen() {
@@ -12,6 +12,8 @@ export default function SignOutScreen() {
   const [signingOut, setSigningOut] = useState(false)
 
   const theme = useTheme()
+
+  const settings = useSettings()
 
   const modal = useModal()
 
@@ -230,6 +232,57 @@ export default function SignOutScreen() {
               </Input.Content>
             </Input.Root>
           </View>
+        </View>
+
+        <View style={{ gap: 8 }}>
+          <Text size="large" font="bold">
+            Theme
+          </Text>
+
+          <Button type="neutral" onPress={() => settings.theme.set(null)}>
+            <View style={{ flex: 1, flexDirection: 'row', gap: 6 }}>
+              <Button.Icon name="theme-light-dark" />
+              <Button.Text>Auto</Button.Text>
+            </View>
+
+            <Button.Icon
+              name={
+                settings.theme.current === 'auto'
+                  ? 'checkbox-marked-circle-outline'
+                  : 'checkbox-blank-circle-outline'
+              }
+            />
+          </Button>
+
+          <Button type="neutral" onPress={() => settings.theme.set('dark')}>
+            <View style={{ flex: 1, flexDirection: 'row', gap: 6 }}>
+              <Button.Icon name="weather-night" />
+              <Button.Text>Dark</Button.Text>
+            </View>
+
+            <Button.Icon
+              name={
+                settings.theme.current === 'dark'
+                  ? 'checkbox-marked-circle-outline'
+                  : 'checkbox-blank-circle-outline'
+              }
+            />
+          </Button>
+
+          <Button type="neutral" onPress={() => settings.theme.set('light')}>
+            <View style={{ flex: 1, flexDirection: 'row', gap: 6 }}>
+              <Button.Icon name="weather-sunny" />
+              <Button.Text>Light</Button.Text>
+            </View>
+
+            <Button.Icon
+              name={
+                settings.theme.current === 'light'
+                  ? 'checkbox-marked-circle-outline'
+                  : 'checkbox-blank-circle-outline'
+              }
+            />
+          </Button>
         </View>
 
         <View style={{ gap: 8 }}>

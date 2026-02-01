@@ -23,7 +23,9 @@ export default function App() {
   }
 
   if (!user) {
-    return <Redirect href="/sign-in" />
+    // TODO: Descomentar redirect para sign-in
+    // return <Redirect href="/sign-in" />
+    return <Redirect href="/sample" />
   }
 
   return <Redirect href="/sample" />

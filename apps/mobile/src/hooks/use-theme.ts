@@ -1,28 +1,26 @@
-import { useMemo } from 'react'
-import { useColorScheme } from 'react-native'
+import { useContext } from 'react'
+import type { ColorSchemeName } from 'react-native'
 
-import { colors } from '@/constants'
-import type { ThemeName } from '@/types'
-import type { Theme } from '@/types/theme'
+import { ThemeContext } from '@/contexts'
+import type { Theme } from '@/types'
 
-const DEFAULT_COLOR_SCHEME_NAME = 'light'
+export function useTheme(): Theme & {
+  select<T>(values: Record<Theme['name'], T>): T
+  set(name: ColorSchemeName | null): void
+} {
+  const context = useContext(ThemeContext)
 
-export function useTheme() {
-  const colorScheme = useColorScheme()
+  if (!context) {
+    throw new Error(
+      '[useTheme] Application must be wrapped in ThemeProvider to get access to this hook.'
+    )
+  }
 
-  const colorSchemeName = useMemo(
-    () => colorScheme ?? DEFAULT_COLOR_SCHEME_NAME,
-    [colorScheme]
-  )
+  const { theme, set } = context
 
-  const theme: Theme = useMemo(
-    () => ({
-      name: colorSchemeName,
-      colors: colors[colorSchemeName],
-      select: (values: Record<ThemeName, any>) => values[colorSchemeName]
-    }),
-    [colorSchemeName]
-  )
-
-  return theme
+  return {
+    ...theme,
+    select: <T>(values: Record<Theme['name'], T>) => values[theme.name],
+    set
+  }
 }
