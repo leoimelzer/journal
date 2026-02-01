@@ -8,7 +8,7 @@ export const lightTheme: Theme = {
     accent: '#E6B450',
     neutral: '#ECE3CF',
     alert: '#CC5C5C',
-    background: '#FDF6DF',
+    background: '#F5EFE5',
     card: '#FAF7F0',
     border: '#DDD5C3',
     text: {
