@@ -53,7 +53,7 @@ export default function SignOutScreen() {
         contentContainerStyle={{ gap: 18 }}
       >
         <View style={{ gap: 8 }}>
-          <Text size="large" font="bold">
+          <Text size="large" font="semibold">
             Button
           </Text>
 
@@ -81,7 +81,7 @@ export default function SignOutScreen() {
         </View>
 
         <View style={{ gap: 8 }}>
-          <Text size="large" font="bold">
+          <Text size="large" font="semibold">
             Semantic
           </Text>
 
@@ -200,7 +200,7 @@ export default function SignOutScreen() {
         </View>
 
         <View style={{ gap: 8 }}>
-          <Text size="large" font="bold">
+          <Text size="large" font="semibold">
             Input
           </Text>
 
@@ -226,7 +226,7 @@ export default function SignOutScreen() {
         </View>
 
         <View style={{ gap: 8 }}>
-          <Text size="large" font="bold">
+          <Text size="large" font="semibold">
             Theme
           </Text>
 
@@ -271,7 +271,7 @@ export default function SignOutScreen() {
         </View>
 
         <View style={{ gap: 8 }}>
-          <Text size="large" font="bold">
+          <Text size="large" font="semibold">
             Actions
           </Text>
 

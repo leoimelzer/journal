@@ -3,25 +3,17 @@ import { StyleSheet } from 'react-native'
 import type { TextStyles } from './text.types'
 
 export const styles = StyleSheet.create<TextStyles>({
-  light: {
-    fontFamily: 'Inter_300Light',
-    fontWeight: '300'
-  },
   regular: {
-    fontFamily: 'Inter_400Regular',
-    fontWeight: '400'
+    fontFamily: 'Lora_400Regular'
   },
   medium: {
-    fontFamily: 'Inter_500Medium',
-    fontWeight: '500'
+    fontFamily: 'Lora_500Medium'
   },
   semibold: {
-    fontFamily: 'Inter_600SemiBold',
-    fontWeight: '600'
+    fontFamily: 'Lora_600SemiBold'
   },
   bold: {
-    fontFamily: 'Inter_700Bold',
-    fontWeight: '700'
+    fontFamily: 'Lora_700Bold'
   },
   small: {
     fontSize: 14,

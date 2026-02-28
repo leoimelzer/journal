@@ -6,7 +6,7 @@ export const styles = StyleSheet.create<InputStyles>({
   input: {
     flex: 1,
     paddingVertical: 14,
-    fontFamily: 'Inter_400Regular',
+    fontFamily: 'Lora_400Regular',
     fontWeight: '400',
     fontSize: 14,
     lineHeight: 20

@@ -1,6 +1,6 @@
 import type { TextProps as RNTextProps, TextStyle } from 'react-native'
 
-type Font = 'light' | 'regular' | 'medium' | 'semibold' | 'bold'
+type Font = 'regular' | 'medium' | 'semibold' | 'bold'
 
 type Size = 'small' | 'normal' | 'large'
 

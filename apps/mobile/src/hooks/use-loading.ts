@@ -6,12 +6,11 @@ import { useEffect, useMemo } from 'react'
 import { locale } from '@/i18n'
 import { useSessionStore } from '@/stores'
 import {
-  Inter_300Light,
-  Inter_400Regular,
-  Inter_500Medium,
-  Inter_600SemiBold,
-  Inter_700Bold
-} from '@expo-google-fonts/inter'
+  Lora_400Regular,
+  Lora_500Medium,
+  Lora_600SemiBold,
+  Lora_700Bold
+} from '@expo-google-fonts/lora'
 import { Feather } from '@expo/vector-icons'
 
 import 'dayjs/locale/pt-br'
@@ -25,11 +24,10 @@ export function useLoading() {
   const sessionLoading = useSessionStore(state => state.loading)
 
   const [fonts] = useFonts({
-    Inter_300Light,
-    Inter_400Regular,
-    Inter_500Medium,
-    Inter_600SemiBold,
-    Inter_700Bold,
+    Lora_400Regular,
+    Lora_500Medium,
+    Lora_600SemiBold,
+    Lora_700Bold,
     ...Feather.font
   })
 
